@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-```{r}
+```{r results='hide'}
 datasets::iris
 iris
 ```
@@ -22,8 +22,8 @@ iris3 <-read.csv(file="iris.csv", header=TRUE, sep = ",")
 ```
 
 ```{r}
-iris$Species
-iris[,5]
+head(iris$Species)
+head(iris[,5])
 ```
 
 
@@ -39,15 +39,34 @@ reference: <https://www.iun.edu/~cisjw/ds/files/practice-1.html#6_data_import>
 weather.tibble <- read_csv(url, na = "n/a")
 ```
 
-## tibble w/dplyr
+## tibble with dplyr
 
 ```{r}
 iris.tib<- read_csv("iris.csv")
 #dplyr
-iris %>% select(1,3)
-iris %>% select_if(is.numeric)
-iris %>% select_if(negate(is.numeric))
+iris.tib %>% 
+  select(1,3) %>% 
+  top_n(5)
+
+iris.tib %>% select_if(is.numeric)  %>% top_n(5)
+iris.tib %>% select_if(negate(is.numeric))%>% top_n(5)
 ```
+
+## summarise 
+
+
+### summary function
+```{r}
+summary(iris)
+```
+
+## dplyr::summarise 
+ref: <https://www.iun.edu/~cisjw/ds/files/script/project/summarise_function.R>
+```{r}
+iris %>% summarise(mean(Sepal.Length))
+iris %>% summarise(mean(Sepal.Length),sd(Sepal.Length))
+```
+
 
 
 ## Data normalization
