@@ -1,6 +1,6 @@
 ---
 title: "Week - Chapter 5"
-author: "Nicholas Bibeau"
+author: "x"
 date: "January 27, 2019"
 output: html_document
 ---
